@@ -1,12 +1,13 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 import requests
 from functools import lru_cache
 import json
 from form_template.models import Category, Template
 import json
 import redis
+from formplus.settings import REDIS_HOST, REDIS_PORT, REDIS_DB
 
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+r = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
 
 @lru_cache()
 def fetch_templates(url):

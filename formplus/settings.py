@@ -136,9 +136,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-REDIS_HOST = 'localhost'
-REDIS_PORT = 6379
-REDIS_DB = 0
+REDIS_HOST = os.environ['REDIS_HOST']
+REDIS_PORT = os.environ['REDIS_PORT']
+REDIS_DB = os.environ['REDIS_DB']
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 USE_TZ = False
 
