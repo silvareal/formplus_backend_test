@@ -1,8 +1,10 @@
+from django.db.models import query
 from form_template.models import Template
 from django.shortcuts import render
 from rest_framework import pagination
 from .serializers import TemplateSerializer
 from rest_framework import generics
+
 
 class CustomPagination(pagination.PageNumberPagination):
     page_size = 1000
@@ -10,15 +12,34 @@ class CustomPagination(pagination.PageNumberPagination):
     max_page_size = 1000
     page_query_param = 'page'
 
+
 class TemplateListView(generics.ListAPIView):
-    queryset = Template.objects.all()
     serializer_class = TemplateSerializer
     pagination_class = CustomPagination
 
-    # def get_queryset(self):
-    #     """
-    #     This view should return a list of all the purchases
-    #     for the currently authenticated user.
-    #     """
-    #     user = self.request.user
-    #     return Purchase.objects.filter(purchaser=user)
+    def get_queryset(self):
+        """
+         Optionally restricts the returned purchases to a given Category,
+         by filtering against a `category_name` query parameter in the URL.
+         """
+
+        sort_by_query = self.request.query_params.get('sort_by')
+        order_by_query = self.request.query_params.get('order_by')
+        search_query = self.request.query_params.get('search')
+            
+        queryset = Template.objects.all()
+        category = self.request.query_params.get('category')
+        
+        if (category is not None) & (category !=  "All"):
+            queryset = queryset.filter(category__name=category)
+
+        if sort_by_query is not None:
+            if (order_by_query == "Descending"):
+                print("testing....")
+                queryset = queryset.order_by(f"-{sort_by_query}")
+            else:
+                queryset = queryset.order_by(sort_by_query)
+
+        if search_query is not None:
+            queryset = queryset.filter(name__contains=search_query)
+        return queryset
