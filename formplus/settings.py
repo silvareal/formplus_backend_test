@@ -142,7 +142,9 @@ REDIS_DB = 0
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 USE_TZ = False
 
-CORS_ALLOWED_ORIGINS = ["*"]
+CORS_ALLOWED_ORIGINS = [
+    "https://localhost:3000",
+    "https://127.0.0.0:8000"]
 
 CORS_ALLOW_METHODS = [
     'DELETE',
