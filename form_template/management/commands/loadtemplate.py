@@ -1,24 +1,17 @@
 from django.core.management.base import BaseCommand, CommandError
 import requests
-import os
 from functools import lru_cache
 import json
 from form_template.models import Category, Template
 import json
 import redis
-from django.core import serializers
+
 r = redis.StrictRedis(host='localhost', port=6379, db=0)
-
-
-
-# Read saved JSON str from Redis and unpack into python dict
-# unpacked_images = json.loads(r.get('images'))
 
 @lru_cache()
 def fetch_templates(url):
     response = requests.get(url)
     return response
-
 
 class Command(BaseCommand):
     help = 'Load Data to template DB'
