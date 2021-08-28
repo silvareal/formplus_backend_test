@@ -19,8 +19,10 @@ class TemplateListView(generics.ListAPIView):
 
     def get_queryset(self):
         """
-         Optionally restricts the returned purchases to a given Category,
+         Optionally restricts the returned template to a given Category,
          by filtering against a `category_name` query parameter in the URL.
+         Searching against a `template_name` query parameter in the URL.
+         sorting against the `template_name` and `template_created_date` query parameter in the URL.
          """
 
         sort_by_query = self.request.query_params.get('sort_by')
@@ -35,7 +37,6 @@ class TemplateListView(generics.ListAPIView):
 
         if sort_by_query is not None:
             if (order_by_query == "Descending"):
-                print("testing....")
                 queryset = queryset.order_by(f"-{sort_by_query}")
             else:
                 queryset = queryset.order_by(sort_by_query)
