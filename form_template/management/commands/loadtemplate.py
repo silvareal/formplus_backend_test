@@ -6,8 +6,12 @@ from form_template.models import Category, Template
 import json
 import redis
 from formplus.settings import REDIS_HOST, REDIS_PORT, REDIS_DB
+import os
 
-r = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
+try:
+    r = redis.StrictRedis(host=REDIS_HOST, port=REDIS_PORT, db=REDIS_DB)
+except:
+    r = redis.StrictRedis.from_url(os.environ['REDIS_URL'])
 
 @lru_cache()
 def fetch_templates(url):
