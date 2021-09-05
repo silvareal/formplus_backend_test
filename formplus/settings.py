@@ -27,7 +27,7 @@ SECRET_KEY = 'sa5p(ebr8@5frvr%vtxm_dvn!pqtk)2e#@$77fm(%fvc(01-+c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ['DEBUG']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".heroku.app", "*"]
 
 
 # Application definition
