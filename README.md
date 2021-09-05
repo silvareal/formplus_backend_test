@@ -74,7 +74,7 @@ $ python manage.py loadtemplate
 ```json
 {
   "count": 1841,
-  "next": "http://127.0.0.1:8000/list/?category=Health&page=2&search=tempor",
+  "next": "http://127.0.0.1:8000/list/",
   "previous": null,
   "results": [
     {
