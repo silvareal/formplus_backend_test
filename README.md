@@ -42,7 +42,7 @@ And navigate to `http://127.0.0.1:8000/`.
 
 To run the tests, `cd` into the directory where `manage.py` is:
 ```sh
-(env)$ python manage.py test --verbosity 2
+(env)$ python manage.py test form_template.tests --verbosity 2
 ```
 ## Redis setup
 ensure redis is install on your os, for linus os, simply run this command on terminal
