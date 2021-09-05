@@ -70,6 +70,7 @@ $ sudo service redis-server stop
 $ python manage.py loadtemplate
 ```
 # Data sample response
+
 ```json
 {
   "count": 1841,
@@ -126,10 +127,12 @@ $ python manage.py loadtemplate
       ],
       "description": "exercitation reprehenderit fugiat elit, Lorem",
       "link": "https://formpl.us/templates"
-    },}
+    },
+    }
 ```
-### GET all template [{BASE_URL}/list/](#)
-### Filter template by any of the three category  [{BASE_URL}/list/?category=Health](#)
-### Search through each template within the active category  [{BASE_URL}/list/?category=Health&search=tempor](#)
-### Sort template by sorted by either `names` or `created` and order_by `Ascending`, `Decending` and `Default`  [{BASE_URL}/list/?sort_by=name&order_by=Ascending](#)
-### Note: GET response of template is paginated and max size for each page is 500 [{BASE_URL}/list/?page=2](#)
+
+- GET all template [{BASE_URL}/list/](#)
+- Filter template by any of the three category  [{BASE_URL}/list/?category=Health](#)
+- Search through each template within the active category  [{BASE_URL}/list/?category=Health&search=tempor](#)
+- Sort template by sorted by either `names` or `created` and order_by `Ascending`, `Decending` and `Default`  [{BASE_URL}/list/?sort_by=name&order_by=Ascending](#)
+- `Note:` GET response of template is paginated and max size for each page is 500 [{BASE_URL}/list/?page=2](#)
