@@ -4,7 +4,9 @@ from form_template.models import Template
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+
 class TemplateListViewTest(APITestCase):
+
     @classmethod
     def setUpTestData(cls):
         # Create 13 authors for pagination tests
