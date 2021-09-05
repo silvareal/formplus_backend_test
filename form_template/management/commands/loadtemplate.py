@@ -5,7 +5,6 @@ import json
 from form_template.models import Category, Template
 import json
 import redis
-from formplus.settings import REDIS_HOST, REDIS_PORT, REDIS_DB
 import os
 
 r = redis.StrictRedis.from_url(os.environ['REDIS_URL'])
@@ -23,8 +22,7 @@ class Command(BaseCommand):
 
         if templates is None:
             template = fetch_templates("https://front-end-task-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates")
-            json_template = json.dumps(template.json())
-            r.set('templates', json_template)
+            r.set('templates', template)
 
         for  template in json.loads(templates):
             template_name = template["name"]
